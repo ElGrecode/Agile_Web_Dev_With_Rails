@@ -11,26 +11,28 @@
 		<%= image_tag("logo.png") %>
 		<%= @page_title || "Pragmatic Bookshelf" %>
 	</div>
-	<div id="columns">
-		<div id="side">
-			<div id="cart">
-				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-					<%= render @cart %>
-				<% end %>
+	<% if @cart %>
+		<div id="columns">
+			<div id="side">
+				<div id="cart">
+					<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+						<%= render @cart %>
+					<% end %>
+				</div>
+				<ul>
+					<li><a href="http://www....">Home</a></li>
+					<li>
+						<a href="http://www.../faq">FAQ</a>
+						<a href="http://www.../news">News</a>
+						<a href="http://www..../contact">Contact</a>
+					</li>
+				</ul>
 			</div>
-			<ul>
-				<li><a href="http://www....">Home</a></li>
-				<li>
-					<a href="http://www.../faq">FAQ</a>
-					<a href="http://www.../news">News</a>
-					<a href="http://www..../contact">Contact</a>
-				</li>
-			</ul>
+			<div id="main">
+				<%= yield %>
+			</div>
 		</div>
-		<div id="main">
-			<%= yield %>
-		</div>
-	</div>
+	<% end %>
 
 </body>
 </html>
